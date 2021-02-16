@@ -4,8 +4,8 @@ import os
 
 
 # game window resolution
-WIN_WIDTH = 1366
-WIN_HEIGHT = 768
+WIN_WIDTH = 800
+WIN_HEIGHT = 600
 
 # main() loop refresh value
 FPS = 60

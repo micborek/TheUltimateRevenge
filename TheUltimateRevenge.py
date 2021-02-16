@@ -1,22 +1,20 @@
 import pygame as pg
 import settings as st
+from hero import hero
 
-# start the pygame
 pg.init()
 WIN = pg.display.set_mode((st.WIN_WIDTH, st.WIN_HEIGHT))
 pg.display.set_caption('The Ultimate Revenge!')
 
-HERO_IMG = pg.image.load(st.HERO_IMG_PATH)
-HERO = pg.transform.scale(HERO_IMG, (55, 40))
-
+hero = Hero(WIN)
 
 def draw_window():
     """This one is for drawing the gameplay window"""
 
     WIN.fill((255, 255, 255))
-    WIN.blit(HERO, (400, 400))
+    hero.draw(WIN)
+    hero.handle_keys()
     pg.display.update()
-
 
 def main():
     """Main function for running the game"""
