@@ -1,11 +1,9 @@
 """This one is holding the values for the main game variables"""
-
 import os
 
-
 # game window resolution
-WIN_WIDTH = 800
-WIN_HEIGHT = 600
+WIN_WIDTH = 1024
+WIN_HEIGHT = 576
 
 # main() loop refresh value
 FPS = 60
