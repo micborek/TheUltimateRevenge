@@ -1,6 +1,6 @@
 import pygame as pg
 import settings as st
-from hero import hero
+from hero import Hero
 
 pg.init()
 WIN = pg.display.set_mode((st.WIN_WIDTH, st.WIN_HEIGHT))
