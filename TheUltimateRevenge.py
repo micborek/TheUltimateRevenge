@@ -10,16 +10,25 @@ hero = Hero(WIN)
 
 
 def draw_window():
-    """This one is for drawing the gameplay window"""
+    """Draw the game-play window"""
+
+    background_img = pygame.image.load(st.BACKGROUND_IMG_PATH)
+    background = pygame.transform.scale(background_img, (1024, 500))
+
+    floor_img = pygame.image.load(st.FLOOR_IMG_PATH)
+    floor = pygame.transform.scale(floor_img, (1024, 500))
 
     WIN.fill((255, 255, 255))
+    WIN.blit(floor, (0, 500))
+    WIN.blit(background, (0, 0))
     hero.draw(WIN)
     hero.handle_keys()
+
     pygame.display.update()
 
 
 def main():
-    """Main function for running the game"""
+    """Run the game"""
 
     clock = pygame.time.Clock()
     run = True

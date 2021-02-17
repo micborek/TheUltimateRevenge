@@ -10,3 +10,5 @@ FPS = 60
 
 # characters img paths
 HERO_IMG_PATH = os.path.join('source', 'img', 'hero.png')
+FLOOR_IMG_PATH = os.path.join('source', 'img', 'floor.png')
+BACKGROUND_IMG_PATH = os.path.join('source', 'img', 'level_background.jpg')
