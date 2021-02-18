@@ -1,32 +1,29 @@
 import pygame
 import settings as st
 from hero import Hero
-from platform import Platform
+from level import Floor, Background, Ground
 
 pygame.init()
 WIN = pygame.display.set_mode((st.WIN_WIDTH, st.WIN_HEIGHT))
 pygame.display.set_caption('The Ultimate Revenge!')
 
 hero = Hero(WIN)
-platform  = Platform(WIN)
+floor = Floor(WIN)
+background = Background()
+ground = Ground()
 
 
 def draw_window():
     """Draw the game-play window"""
 
-    background_img = pygame.image.load(st.BACKGROUND_IMG_PATH)
-    background = pygame.transform.scale(background_img, (1024, 500))
+    # draw static elements
+    WIN.blit(background.get_background(), (0, 0))
+    WIN.blit(ground.get_ground(), (0, 540))
 
-    floor_img = pygame.image.load(st.FLOOR_IMG_PATH)
-    floor = pygame.transform.scale(floor_img, (1024, 500))
-
-    WIN.fill((255, 255, 255))
-    WIN.blit(floor, (0, 500))
-    WIN.blit(background, (0, 0))
+    # handle hero
     hero.draw(WIN)
-    platform.draw(WIN)
     hero.handle_keys()
-    hero.check_bottom_collision(platform.get_rect())
+    hero.check_bottom_collision(floor.get_rect())
     pygame.display.update()
 
 

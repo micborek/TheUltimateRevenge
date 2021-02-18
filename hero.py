@@ -3,11 +3,10 @@ import pygame
 
 class Hero:
     def __init__(self, screen):
-        self._color = (0, 0, 0)
+        self._color = (255, 255, 255)
         self._speed = 5
         self._rect = pygame.draw.rect(screen, self._color, (200, 200, 50, 50))
-        self._bottom_collison = False
-        
+        self._bottom_collision = False
 
     def handle_keys(self):
         """Handle actions from keyboard"""
@@ -19,7 +18,7 @@ class Hero:
             self._rect.move_ip(self._speed, 0)
         if key[pygame.K_UP]:
             self._rect.move_ip(0, -self._speed)
-        if key[pygame.K_DOWN] and not self._bottom_collison:
+        if key[pygame.K_DOWN] and not self._bottom_collision:
             self._rect.move_ip(0, self._speed)
 
     def draw(self, screen):
@@ -29,6 +28,6 @@ class Hero:
 
     def check_bottom_collision(self, platform):
         if self._rect.colliderect(platform):
-            self._bottom_collison = True
+            self._bottom_collision = True
         else:
-            self._bottom_collison = False
+            self._bottom_collision = False
