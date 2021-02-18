@@ -2,6 +2,7 @@ import pygame
 import settings as st
 from hero import Hero
 from level import Floor, Background, Ground
+from start_screen import menu
 
 pygame.init()
 WIN = pygame.display.set_mode((st.WIN_WIDTH, st.WIN_HEIGHT))
@@ -44,4 +45,5 @@ def main():
 
 
 if __name__ == "__main__":
+    menu(WIN)
     main()
