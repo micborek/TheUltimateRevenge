@@ -2,10 +2,11 @@ import pygame
 
 
 class Hero:
-    def __init__(self, screen):
-        self._color = (255, 255, 255)
-        self._speed = 5
-        self._rect = pygame.draw.rect(screen, self._color, (200, 200, 50, 50))
+    def __init__(self, screen, coords):
+        self._color = (0, 0, 0)
+        self._speed = 30
+        self._start_x, self._start_y = coords
+        self._rect = pygame.draw.rect(screen, self._color, (self._start_x, self._start_y, 30, 30))
         self._bottom_collision = False
 
     def handle_keys(self):
@@ -14,12 +15,16 @@ class Hero:
         key = pygame.key.get_pressed()
         if key[pygame.K_LEFT]:
             self._rect.move_ip(-self._speed, 0)
-        if key[pygame.K_RIGHT]:
+            pygame.time.wait(100)
+        elif key[pygame.K_RIGHT]:
             self._rect.move_ip(self._speed, 0)
-        if key[pygame.K_UP]:
+            pygame.time.wait(100)
+        elif key[pygame.K_UP]:
             self._rect.move_ip(0, -self._speed)
-        if key[pygame.K_DOWN] and not self._bottom_collision:
+            pygame.time.wait(100)
+        elif key[pygame.K_DOWN] and not self._bottom_collision:
             self._rect.move_ip(0, self._speed)
+            pygame.time.wait(100)
 
     def draw(self, screen):
         """Draw hero on screen"""
