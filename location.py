@@ -8,8 +8,8 @@ class Location:
         self._width = self._height = 30
         self._map_height = len(self._map) * self._height
         self._map_width = len(self._map[0]) * self._width
-        self._start_y = self._get_starting_cords(self._map_height, WIN_HEIGHT)
-        self._start_x = self._get_starting_cords(self._map_width, WIN_WIDTH)
+        self._start_y = (WIN_HEIGHT - self._map_height) / 2
+        self._start_x = (WIN_WIDTH - self._map_width) / 2
 
     def _get_starting_cords(self, map_length, win_length):
         """Calculate starting coordinates for map"""
