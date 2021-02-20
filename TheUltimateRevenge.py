@@ -1,13 +1,12 @@
 import pygame
-import settings as st
+import settings
 from hero import Hero
-from level import Floor, Background, Ground
 from start_screen import menu
 from locations_settings import LOCATION1_MAP
 from location import Location
 
 pygame.init()
-WIN = pygame.display.set_mode((st.WIN_WIDTH, st.WIN_HEIGHT))
+WIN = pygame.display.set_mode((settings.WIN_WIDTH, settings.WIN_HEIGHT))
 pygame.display.set_caption('The Ultimate Revenge!')
 
 location = Location(LOCATION1_MAP)
@@ -22,8 +21,7 @@ def draw_window():
     # handle hero
     hero.draw(WIN)
     location.draw(WIN)
-    hero.handle_keys()
-    #hero.check_bottom_collision(floor.get_rect())
+    hero.handle_keys(location.get_fields())
     pygame.display.update()
 
 
@@ -33,7 +31,7 @@ def main():
     clock = pygame.time.Clock()
     run = True
     while run:
-        clock.tick(st.FPS)
+        clock.tick(settings.FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
@@ -44,5 +42,5 @@ def main():
 
 
 if __name__ == "__main__":
-    menu(WIN)
+    #menu(WIN)
     main()
