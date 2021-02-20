@@ -12,7 +12,7 @@ WIN_WIDTH = 1024
 WIN_HEIGHT = 576
 
 # main() loop refresh value
-FPS = 20
+FPS = 40
 
 # img paths
 HERO_IMG_PATH = get_img_path('hero.png')

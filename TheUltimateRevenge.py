@@ -21,7 +21,7 @@ def draw_window():
     # handle hero
     hero.draw(WIN)
     location.draw(WIN)
-    hero.handle_keys(LOCATION1_MAP)
+    hero.handle_keys(WIN, LOCATION1_MAP)
     pygame.display.update()
 
 

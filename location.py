@@ -5,7 +5,7 @@ class Location:
     def __init__(self, map):
         self._map = map
         self._color = (255, 0, 0)
-        self._width = self._height = 20
+        self._width = self._height = 64
         self._map_height = len(self._map) * self._height
         self._map_width = len(self._map[0]) * self._width
         self._start_y = (WIN_HEIGHT - self._map_height) / 2
@@ -26,6 +26,7 @@ class Location:
             for cell_idx, cell in enumerate(row):
                 if cell == 'x':
                     fence = pygame.image.load(get_img_path('fence.png')).convert()
+                    fence = pygame.transform.scale(fence, (64, 64))
                     fence_rect = fence.get_rect()
                     fence_rect.x = self._start_x + cell_idx * self._width
                     fence_rect.y = self._start_y + row_idx * self._height
