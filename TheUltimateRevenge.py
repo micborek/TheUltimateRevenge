@@ -13,6 +13,13 @@ location = Location(LOCATION1_MAP)
 hero = Hero(WIN, location.get_starting_hero_cords())
 
 
+def operate():
+    if not menu(WIN):
+        pygame.quit()
+    else:
+        main()
+
+
 def draw_window():
     """Draw the game-play window"""
 
@@ -42,5 +49,4 @@ def main():
 
 
 if __name__ == "__main__":
-    #menu(WIN)
-    main()
+    operate()
