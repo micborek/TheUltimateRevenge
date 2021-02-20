@@ -1,5 +1,5 @@
 import pygame
-from settings import WIN_WIDTH, WIN_HEIGHT
+from settings import WIN_WIDTH, WIN_HEIGHT, get_img_path
 
 class Location:
     def __init__(self, map):
@@ -10,7 +10,8 @@ class Location:
         self._map_width = len(self._map[0]) * self._width
         self._start_y = (WIN_HEIGHT - self._map_height) / 2
         self._start_x = (WIN_WIDTH - self._map_width) / 2
-        self._fields = {}
+        self._fields = []
+        self._initial_draw()
     
     def get_starting_hero_cords(self):
         """Calculate starting hero coordinates"""
@@ -19,15 +20,20 @@ class Location:
                 if cell == 'h':
                     return row_idx, cell_idx, self._start_x + cell_idx * self._width, self._start_y + row_idx * self._height
 
-    def draw(self, screen):
-        """Draw location"""
+    def _initial_draw(self):
         for row_idx, row in enumerate(self._map):
-            fields_row = {}
+            row_fields = []
             for cell_idx, cell in enumerate(row):
                 if cell == 'x':
-                    fields_row[cell_idx] = pygame.draw.rect(screen, self._color, (self._start_x + cell_idx * self._width, self._start_y + row_idx * self._height, self._width, self._height))
-                    fields_row[cell_idx]
-            self._fields[row_idx] = fields_row
+                    fence = pygame.image.load(get_img_path('fence.png')).convert()
+                    fence_rect = fence.get_rect()
+                    fence_rect.x = self._start_x + cell_idx * self._width
+                    fence_rect.y = self._start_y + row_idx * self._height
+                    row_fields.append((fence, fence_rect))
+            self._fields.append(row_fields)
 
-    def get_fields(self):
-        return self._fields
+    def draw(self, screen):
+        """Draw location"""
+        for row in self._fields:
+            for img, rect in row:
+                screen.blit(img, rect)

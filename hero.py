@@ -8,23 +8,23 @@ class Hero:
         self._flat_y, self._flat_x, self._start_x, self._start_y = coords
         self._rect = pygame.draw.rect(screen, self._color, (self._start_x, self._start_y, self._width, self._height))
 
-    def handle_keys(self, fields):
+    def handle_keys(self, map):
         """Handle actions from keyboard"""
 
         key = pygame.key.get_pressed()
-        if key[pygame.K_LEFT] and not self._check_collision(fields[self._flat_y].get(self._flat_x - 1)):
+        if key[pygame.K_LEFT] and map[self._flat_y][self._flat_x - 1] == ' ':
             self._rect.move_ip(-self._speed, 0)
             pygame.time.wait(100)
             self._flat_x -= 1
-        elif key[pygame.K_RIGHT] and not self._check_collision(fields[self._flat_y].get(self._flat_x + 1)):
+        elif key[pygame.K_RIGHT] and map[self._flat_y][self._flat_x + 1] == ' ':
             self._rect.move_ip(self._speed, 0)
             pygame.time.wait(100)
             self._flat_x += 1
-        elif key[pygame.K_UP] and not self._check_collision(fields[self._flat_y - 1].get(self._flat_x)):
+        elif key[pygame.K_UP] and map[self._flat_y - 1][self._flat_x] == ' ':
             self._rect.move_ip(0, -self._speed)
             pygame.time.wait(100)
             self._flat_y -= 1
-        elif key[pygame.K_DOWN] and not self._check_collision(fields[self._flat_y + 1].get(self._flat_x)):
+        elif key[pygame.K_DOWN] and map[self._flat_y + 1][self._flat_x] == ' ':
             self._rect.move_ip(0, self._speed)
             pygame.time.wait(100)
             self._flat_y += 1
