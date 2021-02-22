@@ -18,6 +18,7 @@ class StartText:
 
 
 def menu(screen):
+    """Display menu on screen"""
 
     start_text = StartText('Click any key to start the game!')
     logo = Logo()
