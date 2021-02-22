@@ -48,14 +48,15 @@ class Hero:
             self._rect.move_ip(0, self._speed)
             self._flat_y += 1
 
+        allowed_fields = [' ', 'h']
         key = pygame.key.get_pressed()
-        if key[pygame.K_LEFT] and level[self._flat_y][self._flat_x - 1] == ' ':
+        if key[pygame.K_LEFT] and level[self._flat_y][self._flat_x - 1] in allowed_fields:
             move_left()
-        elif key[pygame.K_RIGHT] and level[self._flat_y][self._flat_x + 1] == ' ':
+        elif key[pygame.K_RIGHT] and level[self._flat_y][self._flat_x + 1] in allowed_fields:
             move_right()
-        elif key[pygame.K_UP] and level[self._flat_y - 1][self._flat_x] == ' ':
+        elif key[pygame.K_UP] and level[self._flat_y - 1][self._flat_x] in allowed_fields:
             move_top()
-        elif key[pygame.K_DOWN] and level[self._flat_y + 1][self._flat_x] == ' ':
+        elif key[pygame.K_DOWN] and level[self._flat_y + 1][self._flat_x] in allowed_fields:
             move_bottom()
         
     def _check_collision(self, field):
